@@ -81,3 +81,4 @@ print(area_of_rectangle(6,4))
 # 5. Explain in your own words: why do we use functions instead of writing code directly?
 # - to reduce code lines and to reuse the code repeated where it's required
 # - improves readability
+print("to reduce code lines and to reuse the code repeated where it's required")
