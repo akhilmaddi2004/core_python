@@ -1,31 +1,35 @@
 # success_attempt(sa)
 # unsuccess attempt (usa)
-sa = usa = 0
-username = "Akhil"
-password = "1234"
+name = "Akhil"
+pwd = "1234"
+usa = sa = 0
 
 def dec(func):
-    def wrap(*args,**kwargs):
-        print("Application Started")
+    def wrapper(*args,**kwargs):
+        print("Application started")
         func(*args,**kwargs)
-    return wrap
+    return wrapper
 
 @dec
-def login(username1,password1):
-    if(username1 == username and password1 == password):
-        global sa
+def login(username,password):
+    global sa,usa
+    if(username == name and password == pwd):
         sa += 1
-        print("Login success")
-    else:
-        global usa
+        print("Login Successful")
+    elif(username != name):
         usa += 1
-        if(usa>=3):
-            print("3 attempts are completed login after 24hrs")
+        if(usa<=3):
+            x = input("Enter username:")
+            login(x,password)
         else:
-            print("Try again")
+            print("No more attempts")
+    else:
+        usa += 1
+        if(usa<=3):
+            x = input("Enter password:")
+            login(username,x)
+        else:
+            print("No more attempts")
 login(input(),input())
-login(input(),input())
-login(input(),input())
-# login(input(),input())
-print(usa)
-print(sa)
+print("sa:",sa)
+print("usa:",usa)
